@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    username: "Senssei"
+  };
+
+  onUsernameChange = event => {
+    this.setState({ username: event.target.value });
+  };
+
+  render() {
+    const style = {
+      backgroundColor: 'white',
+      border: '1px solid blue',
+      cursor: 'pointer'
+    };
+    return (
+      <div className="App">
+        <UserInput username={this.state.username} changed={this.onUsernameChange} />
+        <button style={style}>Change name</button>
+        <UserOutput>I am</UserOutput>
+        <UserOutput username={this.state.username} />
+        <UserOutput>Yay!</UserOutput>
+      </div>
+    );
+  }
 }
-
-export default App;
