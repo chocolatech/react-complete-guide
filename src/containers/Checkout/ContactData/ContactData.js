@@ -101,7 +101,7 @@ class ContactData extends Component {
             ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData,
-            uesrId: this.props.userId
+            userId: this.props.userId
         }
 
         this.props.onOrderBurger(order, this.props.token)
